@@ -188,7 +188,7 @@ MonoBehaviour:
   enemyShotSpeed: 5
   enemyBullet: {fileID: 3407127533522265114, guid: 062b0955fa3b3eb44b05037db4ddc951, type: 3}
   firePos: {fileID: 2158842092287538095}
-  shotThreshold: 3
+  shotThreshold: 1.5
 --- !u!50 &5140617864266992864
 Rigidbody2D:
   serializedVersion: 4

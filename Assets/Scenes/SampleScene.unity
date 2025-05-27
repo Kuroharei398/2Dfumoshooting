@@ -671,10 +671,10 @@ MonoBehaviour:
   moveSpeed: 5
   marginX: 1.5
   marginY: 1.5
-  playerShotSpeed: 7
+  playerShotSpeed: 5
   playerBullet: {fileID: 3407127533522265114, guid: 74cfdc0d96b11144187321ec4fb46b33, type: 3}
   firePos: {fileID: 316910682}
-  shotThreshold: 0.5
+  shotThreshold: 0.2
 --- !u!60 &585046246
 PolygonCollider2D:
   m_ObjectHideFlags: 0
