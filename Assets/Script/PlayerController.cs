@@ -22,6 +22,11 @@ public class PlayerController : MonoBehaviour
     Vector2 playerPos;                              //プレイヤーの最終位置
     float shotDelayRest = 0, shotDelay = 0;         //発射間隔の初期値・時間
 
+    #region PlayerExplosion
+    [Header("プレイヤーの爆発エフェクト")]
+    [SerializeField] GameObject playerExplosion;
+    #endregion
+
     // Start is called before the first frame update
     void Start()
     {
@@ -138,14 +143,28 @@ public class PlayerController : MonoBehaviour
         //敵の弾と接触した場合
         if(collision.gameObject.CompareTag("EnemyBullet"))
         {
-            //自身を破壊
-            Destroy(gameObject);
+            PlayerExplosion(collision);
+        }
 
-            //敵の弾を破壊
-            Destroy(collision.gameObject);
+        //敵の弾と接触した場合
+        else if (collision.gameObject.CompareTag("Enemy"))
+        {
+            PlayerExplosion(collision);
         }
     }
 
+    void PlayerExplosion(Collider2D collision)
+    {
+        //爆発エフェクトをコピー
+        Instantiate(playerExplosion, playerPos, Quaternion.identity);
+
+        // 自身を破棄
+        Destroy(gameObject);
+
+        //接触した対象を破棄
+        Destroy(collision.gameObject);
+
+    }
     #endregion
-    
+
 }

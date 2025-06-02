@@ -189,6 +189,7 @@ MonoBehaviour:
   enemyBullet: {fileID: 3407127533522265114, guid: 062b0955fa3b3eb44b05037db4ddc951, type: 3}
   firePos: {fileID: 838371720980031883}
   shotThreshold: 1.2
+  enemyExplosion: {fileID: 2167536152594558390, guid: 33ca803489b4fd4428e80618c63da834, type: 3}
 --- !u!50 &5719794618525478479
 Rigidbody2D:
   serializedVersion: 4

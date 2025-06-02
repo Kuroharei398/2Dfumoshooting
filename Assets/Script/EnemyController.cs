@@ -21,6 +21,11 @@ public class EnemyController : MonoBehaviour
     [SerializeField] float shotThreshold = 1f;      //発射間隔の閾値
     #endregion
 
+    #region EnemyExplosion
+    [Header("敵の爆発エフェクト")]
+    [SerializeField] GameObject enemyExplosion;
+    #endregion
+
     float shotDelayRest = 0, shotDelay = 0;         //発射間隔の初期値・時間
 
     #region Start
@@ -81,22 +86,30 @@ public class EnemyController : MonoBehaviour
         //プレイヤーと接触した場合
         if(collision.gameObject.CompareTag("Player"))
         {
-            // 自身を破棄
-            Destroy(gameObject);
-
-            //接触したプレイヤーを破棄
-            Destroy(collision.gameObject);
+            EnemyExplosion(collision);
         }
 
         //プレイヤーの弾と接触した場合
         else if(collision.gameObject.CompareTag("PlayerBullet"))
         {
-            //自身を破棄
-            Destroy(gameObject);
-
-            //接触したプレイヤーの弾を破棄
-            Destroy(collision.gameObject);
+            EnemyExplosion(collision);
         }
+    }
+
+    void EnemyExplosion(Collider2D collision)
+    {
+        //敵の位置を取得
+        Vector2 enemyPos = new Vector2(transform.position.x, transform.position.y);
+
+        //爆発エフェクトをコピー
+        Instantiate(enemyExplosion, enemyPos, Quaternion.identity);
+
+        // 自身を破棄
+        Destroy(gameObject);
+
+        //接触した対象を破棄
+        Destroy(collision.gameObject);
+
     }
     #endregion
 
